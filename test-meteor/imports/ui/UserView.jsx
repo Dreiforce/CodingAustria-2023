@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
 import { Router } from 'meteor/iron:router'
+import { LinksCollection, UserStateCollection } from '../api/links';
+
+import { Meteor } from 'meteor/meteor';
 
 export const UserView = ({ teamName }) => {
 
+  
+    Meteor.call('pushState', {
+      teamName: teamName
+    })
 
   const [counter, setCounter] = useState(0);
 
