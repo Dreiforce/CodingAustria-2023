@@ -3,14 +3,22 @@ import logo from './logo.svg';
 import './App.css';
 import AppRouter from './components/AppRouter'
 
+const ADMIN_ID = 'ADMIN'
+
 function App() {
   var [state, setState] = useState({
     data: null
   });
 
-  const callBackendAPI = async () => {
-    const response = await fetch('/express_backend');
-    const body = await response.json();
+  const callEnqueue = async () => {
+    const response = await fetch(`/enqueue/${ADMIN_ID}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ message: 'Hello World!' }),
+    });
+    const body = await response.message;
 
     if (response.status !== 200) {
       throw Error(body.message);
@@ -19,8 +27,8 @@ function App() {
   };
 
   useEffect(() => {
-    callBackendAPI()
-      .then(res => setState({ data: res.express }))
+    callEnqueue()
+      .then(res => setState({ data: res.message }))
       .catch(err => console.log(err));
   }, []);
 
