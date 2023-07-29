@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Router } from 'meteor/iron:router'
 import { LinksCollection, UserStateCollection } from '../api/links';
 
@@ -6,22 +6,46 @@ import { Meteor } from 'meteor/meteor';
 
 export const UserView = ({ teamName }) => {
 
-  
-    Meteor.call('pushState', {
-      teamName: teamName
-    })
+  console.log("init user view again")
 
-  const [counter, setCounter] = useState(0);
+  const [state, setState] = useState({
+    teamName: teamName,
+    "stateTestA": "PRESSED",
+    "stateTestB": "UNKOWN"
+  })
 
-  const increment = () => {
-    setCounter(counter + 1);
-  };
+  useEffect(() => {
+    console.log('pu^ssssssh state ' + JSON.stringify(state))
+    Meteor.call('pushState', state)
+  }, [state])
+
+  const updateSomething = (changes) => {
+    setState(previousState => {
+      return { ...previousState, ...changes }
+    });
+  }
+
+const toggle = (value) => {
+  if(value === "OFF") {
+    return "OK"
+  } else {
+    return "OFF"
+  }
+}
+
+  const pressSmtn = (what) => {
+    return () => {
+      updt = {}
+      updt[what] = toggle(state[what])
+      updateSomething(updt)
+    }
+  }
 
   return (
     <div>
       <h1>i am {teamName} </h1>
-      <button onClick={increment}>Click Me</button>
-      <p>You've pressed the button {counter} times.</p>
+      <button  onClick={pressSmtn("stateTestA")}>press A={state["stateTestA"]}</button>
+      <button  onClick={pressSmtn("stateTestB")}>press B={state["stateTestB"]}</button>
     </div>
   );
 };

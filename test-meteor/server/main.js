@@ -51,7 +51,9 @@ Meteor.methods({
       UserStateCollection.update(userState._id, pushState)
     }
 
-
+    Meteor.publish("links", function () {
+      return UserStateCollection.find();
+    });
 
   },
 
