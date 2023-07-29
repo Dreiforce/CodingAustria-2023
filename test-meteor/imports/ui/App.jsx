@@ -1,11 +1,14 @@
 import React from 'react';
-import { Hello } from './Hello.jsx';
-import { Info } from './Info.jsx';
+import { UserView } from './UserView.jsx';
+import { AdminView } from './AdminView.jsx';
+
 
 export const App = () => (
   <div>
     <h1>Welcome to Meteor!</h1>
-    <Hello/>
-    <Info/>
+    <a href='/admin'>Admin</a><br></br>
+    <a href='/u/TeamA'>Team A</a><br></br>
+    <a href='/u/TeamB'>Team B</a><br></br>
   </div>
 );
+
