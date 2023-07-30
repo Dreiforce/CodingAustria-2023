@@ -8,7 +8,7 @@ import styles from "./Home.module.css";
 import { socket } from '../lib/netcode.js'
 
 const Home = ({userstate, connected}) => {
-  const [tempString, setTemp] = useState("")
+  const [tempString, setTemp] = useState("--.- °C")
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [visible, setVisible] = useState(true);
   const navigate = useNavigate();
@@ -193,6 +193,9 @@ const Home = ({userstate, connected}) => {
         </div>
         <div className={styles.header}>
           <div className={styles.background2} />
+          <div className={styles.temperatur}>
+            {tempString}
+          </div>
           <div className={styles.availabilitySelector} onClick={openDropdown}>
             <div className={styles.availabilitySelectorChild} />
             <img
