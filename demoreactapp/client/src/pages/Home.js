@@ -10,6 +10,7 @@ import { socket } from '../lib/netcode.js'
 const Home = ({userstate, connected}) => {
   const [tempString, setTemp] = useState("")
   const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const [visible, setVisible] = useState(true);
   const navigate = useNavigate();
   const { userName } = useParams();
 
@@ -163,38 +164,21 @@ const Home = ({userstate, connected}) => {
               <div className={styles.needAid1}>Need aid</div>
               <img className={styles.vectorIcon2} alt="" src="/vector2.svg" />
             </div>
-            <div className={styles.refusedHelp}>
-              <img
-                className={styles.reinforcementsChild}
-                alt=""
-                src="/rectangle-154.svg"
-              />
-              <img
-                className={styles.reinforcementsItem}
-                alt=""
-                src="/rectangle-164.svg"
-              />
-              <div className={styles.reinforcementsInner} />
-              <div className={styles.ellipseDiv} />
-              <div className={styles.rectangleDiv} />
-              <div className={styles.refusedHelp1}>Refused help</div>
-              <div className={styles.x}>X</div>
+            <div className={styles.refusedHelp}
+              onClick={() => {
+                setVisible(!visible);
+                }}>
+                {visible 
+                  ? (<img alt="" src="/refused-deactivated-false.png"/>) 
+                  : (<img alt="" src="/refused-deactivated-true.png"/>) }
             </div>
-            <div className={styles.spotted}>
-              <img
-                className={styles.reinforcementsChild}
-                alt=""
-                src="/rectangle-155.svg"
-              />
-              <img
-                className={styles.repeatItem}
-                alt=""
-                src="/rectangle-165.svg"
-              />
-              <div className={styles.repeatInner} />
-              <div className={styles.repeatChild1} />
-              <div className={styles.spotted1}>Spotted</div>
-              <img className={styles.vectorIcon3} alt="" src="/vector3.svg" />
+            <div className={styles.spotted} 
+              onClick={() => {
+                setVisible(!visible);
+                }}>
+                {visible 
+                  ? (<img alt="" src="/Spotted-deactivated-false.png"/>) 
+                  : (<img alt="" src="/Spotted-deactivated-true.png"/>) }
             </div>
           </div>
           <div className={styles.call}>
@@ -218,7 +202,7 @@ const Home = ({userstate, connected}) => {
             />
             <div className={styles.availabilitySelectorInner} />
             <img className={styles.vectorIcon4} alt="" src="/vector4.svg" />
-            <div className={styles.verfgbar}>Verfügbar</div>
+            <div className={styles.verfgbar}>free</div>
           </div>
           <div className={styles.logo}>
             <img
