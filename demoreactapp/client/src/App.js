@@ -42,70 +42,80 @@ import {
 import Home from "./pages/Home";
 import Map1 from "./pages/Map1";
 import Admin from "./pages/Admin";
-import { useEffect,useState } from "react";
+import Select from "./pages/Select";
+import { useEffect, useState } from "react";
 
-import socketIO from 'socket.io-client';
+
+import { socket } from './lib/netcode.js'
 
 const ADMIN_ID = 'ADMIN'
 var i = 0
 var interval = undefined
 
-const socket = socketIO.connect('http://localhost:3000');  
-socket.on('connect', () => {
-  
-  socket.emit('message', {
-    text: {test: "hallowelt"},
-    name: "admin",
-    id: `${socket.id}${Math.random()}`,
-    socketID: socket.id,
-  });
-})
+// socket.on('connect', () => {
+//   socket.emit('message', {
+//     text: {test: "hallowelt"},
+//     name: "admin",
+//     id: `${socket.id}${Math.random()}`,
+//     socketID: socket.id,
+//   });
+// })
 
 function App() {
 
-  var [state, setState] = useState({
-    data: null
+  var [connected, setConnected] = useState(false)
+
+  var [userstate, setUserState] = useState({
+    //map of username -> {state}
+    "example": { userName: "example" }
   });
 
+  useEffect(() => {
+    // no-op if the socket is already connected
+    socket.connect();
+    socket.on('connect', function() {
+      setConnected(true)
+    })
 
-  const callEnqueue = async () => {
-    const response = await fetch(`/enqueue/${ADMIN_ID}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ message: 'Hello World! ' + i++ }),
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
+
+  useEffect(() => {
+    function onUpdateUserState(value) {
+
+      console.log("upating state for client state" + JSON.stringify(value))
+
+      var updated = {}
+      updated[value.userName] = value.state
+      setUserState({ ...userstate, ...updated });
+    }
+
+    socket.on('update_state', onUpdateUserState);
+
+    return () => {
+      socket.off('update_state', onUpdateUserState);
+    };
+  }, [userstate]);
+
+
+  var enqueueMessage = () => {
+    if(userstate["hallowelt"] == undefined) {
+        userstate["hallowelt"] = {
+          userName: "hallowelt",
+          testA: "test"
+        }
+    }
+
+    socket.emit('update_state', {
+      text: { test: "hallowelt" },
+      userName: userstate["hallowelt"].userName,
+      state: userstate["hallowelt"],
+      id: `${socket.id}${Math.random()}`,
+      socketID: socket.id,
     });
-    const body = await response.json();
-
-    if (response.status !== 200) {
-      throw Error(body.message);
-    }
-    return body;
-  };
-
-  const onMessage = (message) => {
-      setState({data: message})
   }
-
-  const callDequeue = async () => {
-    const response = await fetch(`/dequeue/${ADMIN_ID}`);
-    const body = await response.json();
-    if(body.empty === false) {
-      onMessage(body.message)
-    }
-  };
-
-  if(interval !== undefined) clearInterval(interval);
-  // interval = setInterval(callDequeue, 1000);
-
-  var enqueueMessage = (e) => {
-    if (e.target.id === "enqueueButton") {
-      callEnqueue()
-      .catch(err => console.log(err));
-    }
-  }
-
 
 
   const action = useNavigationType();
@@ -132,8 +142,8 @@ function App() {
         metaDescription = "";
         break;
       default:
-        title="err";
-        metaDescription="err";
+        title = "err";
+        metaDescription = "err";
     }
 
     if (title) {
@@ -152,19 +162,20 @@ function App() {
 
   return (
     <div>
-              <button id="enqueueButton" onClick={enqueueMessage}>Enqueue Message</button>
-        
-        {state.data ? (
-          <p>Data from the message queue: {state.data}</p>
-        ) : (
-          <p>Loading...</p>
-        )}
-        
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/map" element={<Map1 />} />
-      <Route path="/admin" element={<Admin />} />
-    </Routes></div>
+      <button id="enqueueButton" onClick={enqueueMessage}>Enqueue Message</button>
+
+      {userstate.data ? (
+        <p>Data from the message queue: {userstate.data}</p>
+      ) : (
+        <p>Loading...</p>
+      )}
+
+      <Routes>
+        <Route path="/" element={<Select/>} />
+        <Route path="/:userName/" element={<Home userstate={userstate} connected={connected}/>} />
+        <Route path="/:userName/map" element={<Map1 userstate={userstate} connected={connected}/>} />
+        <Route path="/admin" element={<Admin userstate={userstate} connected={connected} />} />
+      </Routes></div>
   );
 }
 export default App;

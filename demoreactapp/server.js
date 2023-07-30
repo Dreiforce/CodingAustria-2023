@@ -18,12 +18,20 @@ var adminId = undefined;
 //Add this before the app.get() block
 socketIO.on('connection', (socket) => {
   console.log(`⚡: ${socket.id} user just connected! ${socket.name}`);
-  if(socket.name == 'admin') {
-    console.log("admin connected")
-    adminId = scoket.id
-  }
+  
+  
+  // socketIO.to(socket.id).emit("update_state", {userName:"test", other: "test"});
+  
+  socket.on('update_state', (data) => {
+    console.log(`up state ${JSON.stringify(data)}`)
+    if(adminId !== undefined) socket.to(adminId).emit("update_state", data)
+    });
+  socket.on('make_admin', (data) => {
+    console.log(data.socketID + "user wants to be admin")
+    adminId = data.socketID
+  })
   socket.on('message', (data) => {
-console.log(`messag ${JSON.stringify(data)}`)
+  console.log(`messag ${JSON.stringify(data)}`)
   });
   socket.on('disconnect', () => {
     console.log('🔥: A user disconnected');
