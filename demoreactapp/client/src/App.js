@@ -161,13 +161,13 @@ function App() {
 
   return (
     <div>
-      <button id="enqueueButton" onClick={enqueueMessage}>Enqueue Message</button>
+      {/* <button id="enqueueButton" onClick={enqueueMessage}>Enqueue Message</button>
 
       {userstate.data ? (
         <p>Data from the message queue: {userstate.data}</p>
       ) : (
         <p>Loading...</p>
-      )}
+      )} */}
 
       <Routes>
         <Route path="/" element={<Select/>} />

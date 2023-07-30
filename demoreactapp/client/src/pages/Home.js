@@ -27,6 +27,7 @@ const Home = ({userstate, connected, setUserState}) => {
     const intervalID = setInterval(async () => {
       fetchTemp()
     }, 180000)
+
     setTimeout(fetchTemp, 1000)
 
     return () => {
