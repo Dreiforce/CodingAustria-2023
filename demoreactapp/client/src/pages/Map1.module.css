@@ -128,7 +128,7 @@
 .legend {
   top: 668px;
   left: 136px;
-  width: 132px;
+  width: 145px;
   height: 83px;
 }
 .ernstHappelStadionGrad2Icon {
@@ -276,6 +276,7 @@
   font-size: 12.82px;
 }
 .mapPinIcon1 {
+  z-index: 100;
   position: absolute;
   top: 517px;
   left: 200.85px;

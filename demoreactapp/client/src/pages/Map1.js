@@ -3,7 +3,16 @@ import Dropdown from "../components/Dropdown";
 import PortalPopup from "../components/PortalPopup";
 import { useNavigate } from "react-router-dom";
 import styles from "./Map1.module.css";
+
 const Map1 = () => {
+  const [markerPosition, setMarkerPosition] = useState({ x: null, y: null });
+
+  const handleMapClick = (event) => {
+    const { pageX, pageY } = event;
+    console.log("map clicked: " + pageX + ", " + pageY)
+    setMarkerPosition({ x: pageX, y: pageY });
+  };
+
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -20,7 +29,15 @@ const Map1 = () => {
   }, []);
 
   return (
-    <>
+    <div onClick={handleMapClick}>
+      {markerPosition.x != null && markerPosition.y != null && (
+        <img className={styles.mapPinIcon1} alt="" src="/map-pin1.svg" 
+        style={{
+          left: markerPosition.x-10,
+          top: markerPosition.y-31,
+        }}/>
+      )}
+
       <div className={styles.map}>
         <div className={styles.navbar}>
           <div className={styles.background} />
@@ -48,7 +65,7 @@ const Map1 = () => {
           </div>
         </div>
         <div className={styles.legend}>
-          <div className={styles.youAreHere}>You are here</div>
+          <div className={styles.youAreHere}>Last location</div>
           <img className={styles.mapPinIcon} alt="" src="/map-pin.svg" />
         </div>
         <img
@@ -64,7 +81,7 @@ const Map1 = () => {
           <div className={styles.background2} />
           <div className={styles.availabilitySelector} onClick={openDropdown}>
             <div className={styles.availabilitySelectorChild} />
-            <div className={styles.verfgbar}>Verfügbar</div>
+            <div className={styles.verfgbar}>free</div>
             <img
               className={styles.availabilitySelectorItem}
               alt=""
@@ -82,7 +99,6 @@ const Map1 = () => {
             <img className={styles.vectorIcon1} alt="" src="/vector10.svg" />
           </div>
         </div>
-        <img className={styles.mapPinIcon1} alt="" src="/map-pin1.svg" />
       </div>
       {isDropdownOpen && (
         <PortalPopup
@@ -93,7 +109,7 @@ const Map1 = () => {
           <Dropdown onClose={closeDropdown} />
         </PortalPopup>
       )}
-    </>
+    </div>
   );
 };
 
