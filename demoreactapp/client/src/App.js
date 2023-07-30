@@ -77,6 +77,7 @@ import {
 } from "react-router-dom";
 import Home from "./pages/Home";
 import Map1 from "./pages/Map1";
+import Admin from "./pages/Admin";
 import { useEffect } from "react";
 
 function App() {
@@ -123,6 +124,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/map" element={<Map1 />} />
+      <Route path="/admin" element={<Admin />} />
     </Routes>
   );
 }
