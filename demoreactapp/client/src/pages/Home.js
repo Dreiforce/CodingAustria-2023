@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import Dropdown from "../components/Dropdown";
 import PortalPopup from "../components/PortalPopup";
 import { useNavigate,useParams } from "react-router-dom";
@@ -8,10 +8,32 @@ import styles from "./Home.module.css";
 import { socket } from '../lib/netcode.js'
 
 const Home = ({userstate, connected}) => {
+  const [tempString, setTemp] = useState("")
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const navigate = useNavigate();
   const { userName } = useParams();
 
+ const fetchTemp = async ()=> {
+  await fetch('http://localhost:3000/weather/v1/station/current/tawes-v1-10min')
+  .then(async data => {
+    const res = await data.json();
+    const tl = res.features[0].properties.parameters["TL"]
+    const tmep = tl.data[0] + " " + tl.unit
+    console.log(JSON.stringify(tmep));
+    setTemp(tmep)
+  })
+ }
+
+  useEffect(() => {
+    const intervalID = setInterval(async () => {
+      fetchTemp()
+    }, 180000)
+    setTimeout(fetchTemp, 1000)
+
+    return () => {
+      clearInterval(intervalID)
+    }
+  })
 
   if(connected) {
     if(userstate[userName] == undefined) {

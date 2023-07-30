@@ -8,7 +8,7 @@ function Select() {
     return (
         
         <div>
-        <a href="/admin">admin</a>
+        <a href="/admin">admin</a><br></br>
         <a href="/testuser">user</a>
         </div>
 
