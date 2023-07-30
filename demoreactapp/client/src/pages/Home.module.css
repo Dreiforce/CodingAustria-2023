@@ -126,7 +126,7 @@
 }
 .reinforcementsItem {
   bottom: -7.33px;
-  height: 74.2px;
+  height: 80.2px;
 }
 .ellipseDiv,
 .rectangleDiv,
@@ -137,7 +137,7 @@
 .reinforcementsInner {
   top: 81.53px;
   left: 0;
-  width: 165.81px;
+  width: 164.81px;
   height: 21.99px;
 }
 .ellipseDiv,
@@ -175,7 +175,7 @@
   top: 322.45px;
   left: 174.97px;
   width: 180.97px;
-  height: 148.4px;
+  height: 153px;
 }
 .repeatItem {
   position: absolute;
@@ -189,9 +189,9 @@
 .repeatInner {
   position: absolute;
   top: 54.05px;
-  left: 0;
+  left: 1px;
   background-color: var(--color-red);
-  width: 165.81px;
+  width: 163.81px;
   height: 28.4px;
 }
 .repeatChild1 {
@@ -224,8 +224,8 @@
   position: absolute;
   top: 322.45px;
   left: 0;
-  width: 165.81px;
-  height: 148.4px;
+  width: 164.81px;
+  height: 153px;
 }
 .vectorIcon1 {
   height: 34.48%;
@@ -251,8 +251,8 @@
   position: absolute;
   top: 161.23px;
   left: 174.97px;
-  width: 165.81px;
-  height: 148.4px;
+  width: 164.81px;
+  height: 153px;
 }
 .needAid1 {
   position: absolute;
@@ -279,11 +279,11 @@
   position: absolute;
   top: 161.23px;
   left: 0;
-  width: 165.81px;
-  height: 148.4px;
+  width: 164.81px;
+  height: 153px;
 }
 .refusedHelp1 {
-  width: 71.6%;
+  width: 72.7%;
   top: 70.37%;
   left: 13.5%;
   letter-spacing: 0.34px;
@@ -307,8 +307,8 @@
 .refusedHelp {
   top: 0;
   left: 174.97px;
-  width: 165.81px;
-  height: 148.4px;
+  width: 164.81px;
+  height: 153px;
 }
 .spotted1 {
   position: absolute;
@@ -335,8 +335,8 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 165.81px;
-  height: 148.4px;
+  width: 164.81px;
+  height: 153px;
 }
 .background1,
 .buttons {
