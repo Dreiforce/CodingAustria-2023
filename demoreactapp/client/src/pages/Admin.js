@@ -1,6 +1,6 @@
 import React from 'react';
 
-function AdminView() {
+function Admin() {
     return (
         <div>
             Adminview
@@ -8,4 +8,4 @@ function AdminView() {
     );
 }
  
-export default AdminView;
+export default Admin;
