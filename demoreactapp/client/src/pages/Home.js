@@ -3,14 +3,12 @@ import Dropdown from "../components/Dropdown";
 import PortalPopup from "../components/PortalPopup";
 import { useNavigate,useParams } from "react-router-dom";
 import styles from "./Home.module.css";
-
-
 import { socket } from '../lib/netcode.js'
 
-const Home = ({userstate, connected}) => {
+const Home = ({userstate, connected, setUserState}) => {
   const [tempString, setTemp] = useState("--.- °C")
   const [isDropdownOpen, setDropdownOpen] = useState(false);
-  const [visible, setVisible] = useState(true);
+
   const navigate = useNavigate();
   const { userName } = useParams();
 
@@ -35,14 +33,18 @@ const Home = ({userstate, connected}) => {
       clearInterval(intervalID)
     }
   })
+  if(userstate[userName] == undefined) {
+    userstate[userName] = {
+      spotted: false,
+      refusedHelp: false,
+      needAid: false,
+      arrived: false,
+      repeat: false,
+      reinforcements: false
+    }
+  }
 
   if(connected) {
-    if(userstate[userName] == undefined) {
-      userstate[userName] = {
-        something: "test"
-      }
-    }
-
     socket.emit('update_state', {
       text: { test: "connect" },
       userName: userName,
@@ -50,6 +52,17 @@ const Home = ({userstate, connected}) => {
       id: `${socket.id}${Math.random()}`,
       socketID: socket.id,
     });
+  }
+
+  const pressButton = (key, value) => {
+    console.log("pressing button " + key + " with value " + value)
+    setUserState(prevState => ({
+      ...prevState,
+      [userName]: {
+        ...prevState[userName],
+        [key]: value,
+      },
+    }));
   }
 
   const onMapContainerClick = useCallback(() => {
@@ -94,89 +107,39 @@ const Home = ({userstate, connected}) => {
         </div>
         <div className={styles.body}>
           <div className={styles.buttons}>
-            <div className={styles.reinforcements}>
-              <img
-                className={styles.reinforcementsChild}
-                alt=""
-                src="/rectangle-15.svg"
-              />
-              <img
-                className={styles.reinforcementsItem}
-                alt=""
-                src="/rectangle-16.svg"
-              />
-              <div className={styles.reinforcementsInner} />
-              <div className={styles.ellipseDiv} />
-              <div className={styles.rectangleDiv} />
-              <div className={styles.reinforcements1}>Reinforcements</div>
-              <img className={styles.vectorIcon} alt="" src="/vector.svg" />
+            <div className={styles.reinforcements}
+              onClick={() => {pressButton('reinforcements', !userstate[userName].reinforcements);}}>
+                {!userstate[userName].reinforcements 
+                  ? (<img alt="" src="/reinforcements-deactivated-false.png"/>) 
+                  : (<img alt="" src="/reinforcements-deactivated-true.png"/>) }
             </div>
-            <div className={styles.repeat}>
-              <img
-                className={styles.reinforcementsChild}
-                alt=""
-                src="/rectangle-151.svg"
-              />
-              <img
-                className={styles.repeatItem}
-                alt=""
-                src="/rectangle-161.svg"
-              />
-              <div className={styles.repeatInner} />
-              <div className={styles.repeatChild1} />
-              <div className={styles.repeat1}>Repeat</div>
-              <img
-                className={styles.materialSymbolsreplayIcon}
-                alt=""
-                src="/materialsymbolsreplay.svg"
-              />
+            <div className={styles.repeat}
+              onClick={() => {pressButton('repeat', !userstate[userName].repeat);}}>
+                {!userstate[userName].repeat 
+                  ? (<img alt="" src="/repeat-deactivated-false.png"/>) 
+                  : (<img alt="" src="/repeat-deactivated-true.png"/>) }
             </div>
-            <div className={styles.arrived}>
-              <img
-                className={styles.reinforcementsChild}
-                alt=""
-                src="/rectangle-152.svg"
-              />
-              <img
-                className={styles.reinforcementsItem}
-                alt=""
-                src="/rectangle-162.svg"
-              />
-              <div className={styles.reinforcementsInner} />
-              <div className={styles.ellipseDiv} />
-              <div className={styles.rectangleDiv} />
-              <img className={styles.vectorIcon1} alt="" src="/vector1.svg" />
-              <div className={styles.arrived1}>Arrived</div>
+            <div className={styles.arrived}
+              onClick={() => {pressButton('arrived', !userstate[userName].arrived);}}>
+                {!userstate[userName].arrived 
+                  ? (<img alt="" src="/arrived-deactivated-false.png"/>) 
+                  : (<img alt="" src="/arrived-deactivated-true.png"/>) }
             </div>
-            <div className={styles.needAid}>
-              <img
-                className={styles.reinforcementsChild}
-                alt=""
-                src="/rectangle-153.svg"
-              />
-              <img
-                className={styles.repeatItem}
-                alt=""
-                src="/rectangle-163.svg"
-              />
-              <div className={styles.repeatInner} />
-              <div className={styles.repeatChild1} />
-              <div className={styles.needAid1}>Need aid</div>
-              <img className={styles.vectorIcon2} alt="" src="/vector2.svg" />
+            <div className={styles.needAid}
+              onClick={() => {pressButton('needAid', !userstate[userName].needAid);}}>
+                {!userstate[userName].needAid 
+                  ? (<img alt="" src="/aid-deactivated-false.png"/>) 
+                  : (<img alt="" src="/aid-deactivated-true.png"/>) }
             </div>
             <div className={styles.refusedHelp}
-              onClick={() => {
-                setVisible(!visible);
-                }}>
-                {visible 
+              onClick={() => {pressButton('refusedHelp', !userstate[userName].refusedHelp);}}>
+                {!userstate[userName].refusedHelp 
                   ? (<img alt="" src="/refused-deactivated-false.png"/>) 
                   : (<img alt="" src="/refused-deactivated-true.png"/>) }
             </div>
-            <div className={styles.spotted} 
-              onClick={() => {
-                setVisible(!visible);
-                }}>
-                {visible 
+            <div className={styles.spotted}  
+              onClick={() => {pressButton('spotted', !userstate[userName].spotted);}}>
+                {!userstate[userName].spotted 
                   ? (<img alt="" src="/Spotted-deactivated-false.png"/>) 
                   : (<img alt="" src="/Spotted-deactivated-true.png"/>) }
             </div>

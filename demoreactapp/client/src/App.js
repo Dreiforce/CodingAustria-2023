@@ -117,7 +117,6 @@ function App() {
     });
   }
 
-
   const action = useNavigationType();
   const location = useLocation();
   const pathname = location.pathname;
@@ -172,7 +171,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Select/>} />
-        <Route path="/:userName/" element={<Home userstate={userstate} connected={connected}/>} />
+        <Route path="/:userName/" element={<Home userstate={userstate} connected={connected} setUserState={setUserState}/>} />
         <Route path="/:userName/map" element={<Map1 userstate={userstate} connected={connected}/>} />
         <Route path="/admin" element={<Admin userstate={userstate} connected={connected} />} />
       </Routes></div>
