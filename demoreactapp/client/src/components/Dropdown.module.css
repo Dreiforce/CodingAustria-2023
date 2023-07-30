@@ -1,0 +1,113 @@
+.background {
+  position: absolute;
+  height: 60.63%;
+  width: 67.8%;
+  top: 25.63%;
+  right: 18.64%;
+  bottom: 13.75%;
+  left: 13.56%;
+  border-radius: 19px;
+  background-color: var(--color-white);
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.pause {
+  position: absolute;
+  top: 0;
+  left: 31.52px;
+  letter-spacing: 0.37px;
+  line-height: 25px;
+  display: inline-block;
+  width: 92.6px;
+  height: 25.49px;
+}
+.status3Child {
+  position: absolute;
+  top: 1.96px;
+  left: 0;
+  border-radius: 50%;
+  background-color: #606367;
+  width: 21.67px;
+  height: 21.57px;
+}
+.vectorIcon {
+  position: absolute;
+  top: 7.45px;
+  left: 7.97px;
+  width: 5.73px;
+  height: 10.59px;
+}
+.status2Child,
+.status3 {
+  position: absolute;
+  top: 105.75px;
+  left: 31.53px;
+  width: 124.12px;
+  height: 25.49px;
+}
+.status2Child {
+  top: 1.96px;
+  left: 0;
+  border-radius: 50%;
+  background-color: var(--color-red);
+  width: 21.67px;
+  height: 21.57px;
+}
+.vectorIcon1 {
+  position: absolute;
+  height: 15.01%;
+  width: 11.02%;
+  top: 45.03%;
+  right: 85.8%;
+  bottom: 39.96%;
+  left: 3.18%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.status1Child,
+.status2 {
+  position: absolute;
+  top: 77.31px;
+  left: 31.53px;
+  width: 124.12px;
+  height: 25.49px;
+}
+.status1Child {
+  top: 1.96px;
+  left: 0;
+  border-radius: 50%;
+  background-color: var(--color-limegreen);
+  width: 21.67px;
+  height: 21.57px;
+}
+.vectorIcon2 {
+  position: absolute;
+  height: 39.02%;
+  width: 10.9%;
+  top: 30.35%;
+  right: 85.46%;
+  bottom: 30.63%;
+  left: 3.63%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.status1 {
+  position: absolute;
+  top: 47.89px;
+  left: 31.53px;
+  width: 124.12px;
+  height: 25.49px;
+}
+.dropdown {
+  position: relative;
+  width: 177px;
+  height: 160px;
+  max-width: 100%;
+  max-height: 100%;
+  overflow: auto;
+  text-align: left;
+  font-size: var(--font-size-mini);
+  color: var(--color-black);
+  font-family: var(--font-ubuntu);
+}

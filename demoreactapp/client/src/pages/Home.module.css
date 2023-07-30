@@ -1,0 +1,512 @@
+.background,
+.map1 {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+.background {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  border-radius: 17.41px;
+  background-color: var(--color-white);
+  box-shadow: 0 3.6642520427703857px 3.66px rgba(0, 0, 0, 0.25);
+}
+.map1 {
+  letter-spacing: 0.34px;
+  line-height: 82.45px;
+  display: inline-block;
+}
+.map,
+.map01Icon,
+.map1 {
+  position: absolute;
+}
+.map01Icon {
+  height: 58.18%;
+  width: 29.63%;
+  top: 3.64%;
+  right: 35.19%;
+  bottom: 38.18%;
+  left: 35.19%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.map {
+  height: 80.88%;
+  width: 31.67%;
+  top: 8.82%;
+  right: 6.45%;
+  bottom: 10.29%;
+  left: 61.88%;
+  cursor: pointer;
+}
+.phuserLightIcon {
+  position: absolute;
+  top: 0;
+  left: 35px;
+  width: 35.73px;
+  height: 35.73px;
+  overflow: hidden;
+}
+.profile1 {
+  margin: 0;
+}
+.codes {
+  position: absolute;
+  height: 96.05%;
+  width: 100%;
+  top: 3.95%;
+  left: 0;
+  letter-spacing: 0.34px;
+  line-height: 82.45px;
+  display: inline-block;
+}
+.codes1,
+.profile {
+  position: absolute;
+  top: 3px;
+  left: 117px;
+  width: 108px;
+  height: 53.05px;
+}
+.codes1 {
+  height: 98.21%;
+  width: 100%;
+  top: 1.79%;
+  left: 0;
+  letter-spacing: 0.34px;
+  line-height: 82.45px;
+  display: inline-block;
+}
+.annotationAlertIcon {
+  position: absolute;
+  height: 66.07%;
+  width: 36.11%;
+  top: 0;
+  right: 31.48%;
+  bottom: 33.93%;
+  left: 32.41%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.navbar,
+.status {
+  position: absolute;
+}
+.status {
+  height: 82.35%;
+  width: 31.67%;
+  top: 7.35%;
+  right: 63.05%;
+  bottom: 10.29%;
+  left: 5.28%;
+  color: var(--color-firebrick);
+}
+.navbar {
+  top: 760px;
+  left: 26px;
+  width: 341px;
+  height: 63px;
+  text-align: center;
+}
+.reinforcementsChild,
+.reinforcementsItem {
+  position: absolute;
+  left: -3.66px;
+  border-radius: 27.48px;
+  width: 173.14px;
+}
+.reinforcementsChild {
+  top: 0;
+  height: 155.73px;
+}
+.reinforcementsItem {
+  bottom: -7.33px;
+  height: 74.2px;
+}
+.ellipseDiv,
+.rectangleDiv,
+.reinforcementsInner {
+  position: absolute;
+  background-color: var(--color-firebrick);
+}
+.reinforcementsInner {
+  top: 81.53px;
+  left: 0;
+  width: 165.81px;
+  height: 21.99px;
+}
+.ellipseDiv,
+.rectangleDiv {
+  left: 30.23px;
+  width: 104.43px;
+}
+.ellipseDiv {
+  top: 31.15px;
+  border-radius: 50%;
+  height: 104.43px;
+}
+.rectangleDiv {
+  top: 81.53px;
+  height: 44.89px;
+}
+.reinforcements1 {
+  position: absolute;
+  width: 93.94%;
+  top: 72.08%;
+  left: 6.06%;
+  letter-spacing: 0.34px;
+  line-height: 22.9px;
+  display: inline-block;
+}
+.reinforcements,
+.vectorIcon {
+  position: absolute;
+  top: 45.08px;
+  left: 55.04px;
+  width: 55.73px;
+  height: 39.01px;
+}
+.reinforcements {
+  top: 322.45px;
+  left: 174.97px;
+  width: 180.97px;
+  height: 148.4px;
+}
+.repeatItem {
+  position: absolute;
+  bottom: -7.33px;
+  left: -3.66px;
+  border-radius: 27.48px;
+  width: 173.14px;
+  height: 95.27px;
+}
+.repeatChild1,
+.repeatInner {
+  position: absolute;
+  top: 54.05px;
+  left: 0;
+  background-color: var(--color-red);
+  width: 165.81px;
+  height: 28.4px;
+}
+.repeatChild1 {
+  top: 28.4px;
+  left: 28.4px;
+  border-radius: 50%;
+  background-color: var(--color-firebrick);
+  width: 104.43px;
+  height: 104.43px;
+}
+.repeat1 {
+  position: absolute;
+  width: 39.11%;
+  top: 72.22%;
+  left: 30.28%;
+  letter-spacing: 0.34px;
+  line-height: 22.9px;
+  display: inline-block;
+}
+.materialSymbolsreplayIcon {
+  position: absolute;
+  top: 48.55px;
+  left: 54.05px;
+  width: 51.3px;
+  height: 51.3px;
+  overflow: hidden;
+}
+.repeat,
+.vectorIcon1 {
+  position: absolute;
+  top: 322.45px;
+  left: 0;
+  width: 165.81px;
+  height: 148.4px;
+}
+.vectorIcon1 {
+  height: 34.48%;
+  width: 24.07%;
+  top: 31.83%;
+  right: 38.36%;
+  bottom: 33.68%;
+  left: 37.57%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.arrived1 {
+  position: absolute;
+  width: 51.87%;
+  top: 70.21%;
+  left: 29.54%;
+  letter-spacing: 0.34px;
+  line-height: 22.9px;
+  display: inline-block;
+}
+.arrived {
+  position: absolute;
+  top: 161.23px;
+  left: 174.97px;
+  width: 165.81px;
+  height: 148.4px;
+}
+.needAid1 {
+  position: absolute;
+  width: 56.69%;
+  top: 70.21%;
+  left: 23.48%;
+  letter-spacing: 0.34px;
+  line-height: 22.9px;
+  display: inline-block;
+}
+.vectorIcon2 {
+  position: absolute;
+  height: 32.47%;
+  width: 29.06%;
+  top: 29.45%;
+  right: 37.4%;
+  bottom: 38.09%;
+  left: 33.54%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.needAid {
+  position: absolute;
+  top: 161.23px;
+  left: 0;
+  width: 165.81px;
+  height: 148.4px;
+}
+.refusedHelp1 {
+  width: 71.6%;
+  top: 70.37%;
+  left: 13.5%;
+  letter-spacing: 0.34px;
+  line-height: 22.9px;
+  display: inline-block;
+}
+.refusedHelp,
+.refusedHelp1,
+.x {
+  position: absolute;
+}
+.x {
+  top: 60.46px;
+  left: 64.12px;
+  font-size: 53.13px;
+  letter-spacing: 0.34px;
+  line-height: 22.9px;
+  font-family: var(--font-pt-sans-caption);
+  -webkit-text-stroke: 2.7px #fff;
+}
+.refusedHelp {
+  top: 0;
+  left: 174.97px;
+  width: 165.81px;
+  height: 148.4px;
+}
+.spotted1 {
+  position: absolute;
+  width: 43.93%;
+  top: 70.37%;
+  left: 28.08%;
+  letter-spacing: 0.34px;
+  line-height: 22.9px;
+  display: inline-block;
+}
+.vectorIcon3 {
+  position: absolute;
+  height: 31.22%;
+  width: 42.27%;
+  top: 29.14%;
+  right: 29.97%;
+  bottom: 39.64%;
+  left: 27.76%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.spotted {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 165.81px;
+  height: 148.4px;
+}
+.background1,
+.buttons {
+  position: absolute;
+  top: 81.58px;
+  left: 0.06px;
+  width: 355.94px;
+  height: 470.86px;
+}
+.background1 {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: var(--br-mid-4) var(--br-mid-4) 17.41px 17.41px;
+  background-color: var(--color-red);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+.callControlCentre {
+  position: absolute;
+  height: 56.36%;
+  width: 57.48%;
+  top: 25.45%;
+  left: 33.43%;
+  letter-spacing: 0.34px;
+  line-height: 22.9px;
+  display: inline-block;
+}
+.phphoneThinIcon {
+  top: 6px;
+  left: 58px;
+  width: 44px;
+  height: 45.81px;
+  overflow: hidden;
+}
+.body,
+.call,
+.phphoneThinIcon {
+  position: absolute;
+}
+.call {
+  height: 9.96%;
+  width: 95.79%;
+  top: 0;
+  right: 4.21%;
+  bottom: 90.04%;
+  left: 0;
+}
+.body {
+  top: 172px;
+  left: 26px;
+  width: 356px;
+  height: 552.44px;
+  font-size: 19.24px;
+  color: var(--color-white);
+}
+.availabilitySelectorChild,
+.background2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--color-white);
+}
+.background2 {
+  height: 100%;
+  width: 100%;
+  right: 0;
+  bottom: 0;
+  border-radius: 0 0 17.41px 17.41px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+.availabilitySelectorChild {
+  border-radius: 9.16px;
+  border: 0.9px solid var(--color-gainsboro);
+  box-sizing: border-box;
+  width: 141.99px;
+  height: 37.56px;
+}
+.availabilitySelectorItem {
+  position: absolute;
+  top: 15.12px;
+  left: 115.06px;
+  width: 13.86px;
+  height: 6.87px;
+}
+.availabilitySelectorInner {
+  position: absolute;
+  top: 7.33px;
+  left: 11.91px;
+  border-radius: 50%;
+  background-color: var(--color-limegreen);
+  width: 20.15px;
+  height: 20.15px;
+}
+.vectorIcon4 {
+  position: absolute;
+  height: 26.83%;
+  width: 10.3%;
+  top: 34.15%;
+  right: 79.75%;
+  bottom: 39.02%;
+  left: 9.95%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.verfgbar {
+  position: absolute;
+  top: 10.08px;
+  left: 43.97px;
+  display: inline-block;
+  width: 79.99px;
+  height: 21.07px;
+}
+.availabilitySelector {
+  position: absolute;
+  top: 73px;
+  left: 210px;
+  width: 141.99px;
+  height: 37.56px;
+  cursor: pointer;
+}
+.xxl3945247131Icon {
+  position: absolute;
+  top: 57.84px;
+  left: 0;
+  width: 125px;
+  height: 33.58px;
+  object-fit: cover;
+}
+.vectorIcon5 {
+  position: absolute;
+  height: 56.12%;
+  width: 41.79%;
+  top: 0;
+  right: 29.1%;
+  bottom: 43.88%;
+  left: 29.1%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.header,
+.logo {
+  position: absolute;
+  top: 38.58px;
+  left: 26px;
+  width: 125px;
+  height: 91.42px;
+}
+.header {
+  height: 16.9%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 83.1%;
+  left: 0;
+  font-size: 12.82px;
+  color: var(--color-black);
+}
+.home {
+  position: relative;
+  background-color: var(--color-whitesmoke);
+  width: 100%;
+  height: 852px;
+  overflow: hidden;
+  text-align: left;
+  font-size: 17.41px;
+  color: var(--color-gray);
+  font-family: var(--font-ubuntu);
+}

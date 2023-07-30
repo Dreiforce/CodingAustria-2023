@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@400&display=swap");
+body {
+  margin: 0;
+  line-height: normal;
+}
+:root {
+  /* fonts */
+  --font-ubuntu: Ubuntu;
+  --font-pt-sans-caption: "PT Sans Caption";
+
+  /* font sizes */
+  --font-size-smi-8: 12.8px;
+  --font-size-lgi-2: 19.2px;
+  --font-size-mid-4: 17.4px;
+  --font-size-mini: 15px;
+
+  /* Colors */
+  --color-whitesmoke: #f5f5f5;
+  --color-black: #000;
+  --color-limegreen: #3dd765;
+  --color-white: #fff;
+  --color-gainsboro: #dfe1e5;
+  --color-red: #f01411;
+  --color-firebrick: #b70e0c;
+  --color-gray: rgba(44, 44, 45, 0.59);
+
+  /* border radiuses */
+  --br-3xs-2: 9.2px;
+  --br-mid-4: 17.4px;
+  --br-8xl-5: 27.5px;
+}
