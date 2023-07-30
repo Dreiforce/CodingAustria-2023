@@ -2,9 +2,42 @@ const express = require('express'); //Line 1
 const app = express(); //Line 2
 const port = process.env.PORT || 5000; //Line 3
 
+
+const http = require('http').Server(app);
+//New imports
+
+const socketIO = require('socket.io')(http, {
+  cors: {
+    origin: "http://localhost:3000"
+  }
+});
+
+var adminId = undefined;
+
+
+//Add this before the app.get() block
+socketIO.on('connection', (socket) => {
+  console.log(`⚡: ${socket.id} user just connected! ${socket.name}`);
+  if(socket.name == 'admin') {
+    console.log("admin connected")
+    adminId = scoket.id
+  }
+  socket.on('message', (data) => {
+console.log(`messag ${JSON.stringify(data)}`)
+  });
+  socket.on('disconnect', () => {
+    console.log('🔥: A user disconnected');
+  });
+});
+
 app.use(express.json());
 // This displays message that the server running and listening to specified port
-app.listen(port, () => console.log(`Listening on port ${port}`)); //Line 6
+// app.listen(port, () => console.log(`Listening on port ${port}`)); //Line 6
+http.listen(port, () => {
+
+  console.log(`Server listening on ${port}`);
+
+});
 
 // create a GET route
 app.get('/express_backend', (req, res) => { //Line 9

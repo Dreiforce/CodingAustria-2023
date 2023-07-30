@@ -44,16 +44,29 @@ import Map1 from "./pages/Map1";
 import Admin from "./pages/Admin";
 import { useEffect,useState } from "react";
 
+import socketIO from 'socket.io-client';
 
 const ADMIN_ID = 'ADMIN'
 var i = 0
 var interval = undefined
+
+const socket = socketIO.connect('http://localhost:3000');  
+socket.on('connect', () => {
+  
+  socket.emit('message', {
+    text: {test: "hallowelt"},
+    name: "admin",
+    id: `${socket.id}${Math.random()}`,
+    socketID: socket.id,
+  });
+})
 
 function App() {
 
   var [state, setState] = useState({
     data: null
   });
+
 
   const callEnqueue = async () => {
     const response = await fetch(`/enqueue/${ADMIN_ID}`, {
@@ -84,7 +97,7 @@ function App() {
   };
 
   if(interval !== undefined) clearInterval(interval);
-  interval = setInterval(callDequeue, 1000);
+  // interval = setInterval(callDequeue, 1000);
 
   var enqueueMessage = (e) => {
     if (e.target.id === "enqueueButton") {
