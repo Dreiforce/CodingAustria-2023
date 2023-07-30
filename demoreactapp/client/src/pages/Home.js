@@ -32,7 +32,7 @@ const Home = () => {
             <img
               className={styles.phuserLightIcon}
               alt=""
-              src="/phuserlight.svg"
+              src="/phuserlight1.svg"
             />
             <div className={styles.codes}>
               <p className={styles.profile1}>Profile</p>
@@ -155,7 +155,7 @@ const Home = () => {
           </div>
           <div className={styles.call}>
             <div className={styles.background1} />
-            <b className={styles.callControlCentre}>Call control centre</b>
+            <b className={styles.callControlCentre}>Call control center</b>
             <img
               className={styles.phphoneThinIcon}
               alt=""
