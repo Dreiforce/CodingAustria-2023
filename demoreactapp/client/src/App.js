@@ -3,45 +3,9 @@ import logo from './logo.svg';
 import './App.css';
 import AppRouter from './components/AppRouter'
 
-const ADMIN_ID = 'ADMIN'
-var i = 0
 
 function App() {
-  var [state, setState] = useState({
-    data: null
-  });
-
-  const callEnqueue = async () => {
-    const response = await fetch(`/enqueue/${ADMIN_ID}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ message: 'Hello World! ' + i++ }),
-    });
-    const body = await response.json();
-
-    if (response.status !== 200) {
-      throw Error(body.message);
-    }
-    return body;
-  };
-
-  const callDequeue = async () => {
-    const response = await fetch(`/dequeue/${ADMIN_ID}`);
-    const body = await response.json();
-    return body;
-  };
-
-  setInterval(callDequeue, 1000);
-
-  var enqueueMessage = (e) => {
-    if (e.target.id === "enqueueButton") {
-      callEnqueue()
-      .catch(err => console.log(err));
-    }
-  }
-
+  
   return (
     <div className="App">
       <AppRouter></AppRouter>
@@ -78,9 +42,59 @@ import {
 import Home from "./pages/Home";
 import Map1 from "./pages/Map1";
 import Admin from "./pages/Admin";
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
+
+
+const ADMIN_ID = 'ADMIN'
+var i = 0
+var interval = undefined
 
 function App() {
+
+  var [state, setState] = useState({
+    data: null
+  });
+
+  const callEnqueue = async () => {
+    const response = await fetch(`/enqueue/${ADMIN_ID}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ message: 'Hello World! ' + i++ }),
+    });
+    const body = await response.json();
+
+    if (response.status !== 200) {
+      throw Error(body.message);
+    }
+    return body;
+  };
+
+  const onMessage = (message) => {
+      setState({data: message})
+  }
+
+  const callDequeue = async () => {
+    const response = await fetch(`/dequeue/${ADMIN_ID}`);
+    const body = await response.json();
+    if(body.empty === false) {
+      onMessage(body.message)
+    }
+  };
+
+  if(interval !== undefined) clearInterval(interval);
+  interval = setInterval(callDequeue, 1000);
+
+  var enqueueMessage = (e) => {
+    if (e.target.id === "enqueueButton") {
+      callEnqueue()
+      .catch(err => console.log(err));
+    }
+  }
+
+
+
   const action = useNavigationType();
   const location = useLocation();
   const pathname = location.pathname;
@@ -104,6 +118,9 @@ function App() {
         title = "";
         metaDescription = "";
         break;
+      default:
+        title="err";
+        metaDescription="err";
     }
 
     if (title) {
@@ -121,11 +138,20 @@ function App() {
   }, [pathname]);
 
   return (
+    <div>
+              <button id="enqueueButton" onClick={enqueueMessage}>Enqueue Message</button>
+        
+        {state.data ? (
+          <p>Data from the message queue: {state.data}</p>
+        ) : (
+          <p>Loading...</p>
+        )}
+        
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/map" element={<Map1 />} />
       <Route path="/admin" element={<Admin />} />
-    </Routes>
+    </Routes></div>
   );
 }
 export default App;
