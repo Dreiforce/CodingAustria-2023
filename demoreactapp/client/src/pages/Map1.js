@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
-import Dropdown from "../../../../locofy/src/components/Dropdown";
-import PortalPopup from "../../../../locofy/src/components/PortalPopup";
+import Dropdown from "../components/Dropdown";
+import PortalPopup from "../components/PortalPopup";
 import { useNavigate } from "react-router-dom";
 import styles from "./Map1.module.css";
 const Map1 = () => {
