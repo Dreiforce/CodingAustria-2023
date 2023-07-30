@@ -1,10 +1,10 @@
 import { useState, useCallback } from "react";
 import Dropdown from "../components/Dropdown";
 import PortalPopup from "../components/PortalPopup";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams} from "react-router-dom";
 import styles from "./Map1.module.css";
 
-const Map1 = () => {
+const Map1 = ({userstate, connected}) => {
   const [markerPosition, setMarkerPosition] = useState({ x: null, y: null });
 
   const handleMapClick = (event) => {
@@ -13,11 +13,14 @@ const Map1 = () => {
     setMarkerPosition({ x: pageX, y: pageY });
   };
 
+
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const navigate = useNavigate();
+  
+  const { userName } = useParams();
 
   const onStatusContainerClick = useCallback(() => {
-    navigate("/");
+    navigate('/' + userName);
   }, [navigate]);
 
   const openDropdown = useCallback(() => {

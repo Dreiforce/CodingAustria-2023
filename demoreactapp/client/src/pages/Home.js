@@ -1,15 +1,37 @@
 import { useState, useCallback } from "react";
 import Dropdown from "../components/Dropdown";
 import PortalPopup from "../components/PortalPopup";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useParams } from "react-router-dom";
 import styles from "./Home.module.css";
-const Home = () => {
+
+
+import { socket } from '../lib/netcode.js'
+
+const Home = ({userstate, connected}) => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [visible, setVisible] = useState(true);
   const navigate = useNavigate();
+  const { userName } = useParams();
+
+
+  if(connected) {
+    if(userstate[userName] == undefined) {
+      userstate[userName] = {
+        something: "test"
+      }
+    }
+
+    socket.emit('update_state', {
+      text: { test: "connect" },
+      userName: userName,
+      state: userstate[userName],
+      id: `${socket.id}${Math.random()}`,
+      socketID: socket.id,
+    });
+  }
 
   const onMapContainerClick = useCallback(() => {
-    navigate("/map");
+    navigate("map");
   }, [navigate]);
 
   const openDropdown = useCallback(() => {
