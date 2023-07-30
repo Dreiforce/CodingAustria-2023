@@ -14,6 +14,7 @@ const Home = ({userstate, connected, setUserState,tempString}) => {
 
   if(userstate[userName] == undefined) {
     userstate[userName] = {
+      userName: userName,
       spotted: false,
       refusedHelp: false,
       needAid: false,
