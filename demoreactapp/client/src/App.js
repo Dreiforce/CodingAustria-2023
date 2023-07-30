@@ -70,6 +70,31 @@ function App() {
     "example": { userName: "example" }
   });
 
+  const [tempString, setTemp] = useState("--.- °C")
+  
+  const fetchTemp = async ()=> {
+   await fetch('http://localhost:3000/weather/v1/station/current/tawes-v1-10min')
+   .then(async data => {
+     const res = await data.json();
+     const tl = res.features[0].properties.parameters["TL"]
+     const tmep = tl.data[0] + " " + tl.unit
+     console.log(JSON.stringify(tmep));
+     setTemp(tmep)
+   })
+  }
+ 
+   useEffect(() => {
+     const intervalID = setInterval(async () => {
+       fetchTemp()
+     }, 180000)
+ 
+     setTimeout(fetchTemp, 1000)
+ 
+     return () => {
+       clearInterval(intervalID)
+     }
+   })
+
   useEffect(() => {
     // no-op if the socket is already connected
     socket.connect();
@@ -121,6 +146,7 @@ function App() {
   const location = useLocation();
   const pathname = location.pathname;
 
+
   useEffect(() => {
     if (action !== "POP") {
       window.scrollTo(0, 0);
@@ -171,8 +197,8 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Select/>} />
-        <Route path="/:userName/" element={<Home userstate={userstate} connected={connected} setUserState={setUserState}/>} />
-        <Route path="/:userName/map" element={<Map1 userstate={userstate} connected={connected}/>} />
+        <Route path="/:userName/" element={<Home userstate={userstate} connected={connected} setUserState={setUserState} tempString={tempString}/>} />
+        <Route path="/:userName/map" element={<Map1 userstate={userstate} connected={connected} tempString={tempString}/>} />
         <Route path="/admin" element={<Admin userstate={userstate} connected={connected} />} />
       </Routes></div>
   );

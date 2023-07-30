@@ -201,6 +201,16 @@
   width: 79.99px;
   height: 21.07px;
 }
+
+.temperatur {
+  position: absolute;
+  top: 179px;
+  left: 270px;
+  width: 141.99px;
+  height: 37.56px;
+  cursor: pointer;
+  font-size: 25px;
+}
 .availabilitySelectorItem {
   position: absolute;
   top: 15.12px;

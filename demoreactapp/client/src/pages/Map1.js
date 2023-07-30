@@ -4,7 +4,7 @@ import PortalPopup from "../components/PortalPopup";
 import { useNavigate, useParams} from "react-router-dom";
 import styles from "./Map1.module.css";
 
-const Map1 = ({userstate, connected}) => {
+const Map1 = ({userstate, connected, tempString}) => {
   const [markerPosition, setMarkerPosition] = useState({ x: null, y: null });
 
   const handleMapClick = (event) => {
@@ -21,7 +21,7 @@ const Map1 = ({userstate, connected}) => {
 
   const onStatusContainerClick = useCallback(() => {
     navigate('/' + userName);
-  }, [navigate]);
+  }, [navigate, userName]);
 
   const openDropdown = useCallback(() => {
     setDropdownOpen(true);
@@ -82,6 +82,9 @@ const Map1 = ({userstate, connected}) => {
         </div>
         <div className={styles.header}>
           <div className={styles.background2} />
+          <div className={styles.temperatur}>
+            {tempString}
+          </div>
           <div className={styles.availabilitySelector} onClick={openDropdown}>
             <div className={styles.availabilitySelectorChild} />
             <div className={styles.verfgbar}>free</div>
